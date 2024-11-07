@@ -10,7 +10,17 @@ class TralhaDePescaApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Tralha de Pesca',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          secondary: Colors.greenAccent, // Define a accent color aqui
+        ),
+        buttonTheme: ButtonThemeData(
+          buttonColor: Colors.blueAccent,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          textTheme: ButtonTextTheme.primary,
+        ),
+      ),
       initialRoute: '/',
       routes: {
         '/': (context) => HomeScreen(),

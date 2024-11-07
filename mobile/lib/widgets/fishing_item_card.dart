@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../models/fishing_item.dart';
 
 class FishingItemCard extends StatelessWidget {
@@ -14,7 +13,7 @@ class FishingItemCard extends StatelessWidget {
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: ListTile(
-        leading: FaIcon(FontAwesomeIcons.fish, color: Colors.blueAccent, size: 40),
+        leading: Icon(Icons.sailing, color: Colors.blueAccent, size: 40),
         title: Text(
           item.name,
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
