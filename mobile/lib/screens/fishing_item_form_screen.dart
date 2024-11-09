@@ -4,13 +4,22 @@ import '../models/fishing_item.dart';
 
 class FishingItemFormScreen extends StatelessWidget {
   final FishingRepository repository = FishingRepository();
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController weightController = TextEditingController();
+  final TextEditingController nomeController = TextEditingController();
+  final TextEditingController pesoController = TextEditingController();
+  final TextEditingController pesoIscaController = TextEditingController();
+  final TextEditingController materialController = TextEditingController();
+  final TextEditingController tipoController = TextEditingController();
+  final TextEditingController ambienteController = TextEditingController();
 
   void saveItem(BuildContext context) {
-    final name = nameController.text;
-    final weight = double.tryParse(weightController.text) ?? 0.0;
-    final item = FishingItem(name: name, weight: weight);
+    final item = FishingItem(
+      nome: nomeController.text,
+      peso: int.tryParse(pesoController.text) ?? 0,
+      pesoIsca: int.tryParse(pesoIscaController.text) ?? 0,
+      material: materialController.text,
+      tipo: tipoController.text,
+      ambiente: ambienteController.text,
+    );
     repository.addItem(item).then((_) {
       Navigator.pop(context);
     });
@@ -20,7 +29,7 @@ class FishingItemFormScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Adicionar Item de Pesca'),
+        title: Text('Adicionar Equipamento de Pesca'),
         backgroundColor: Colors.blueAccent,
       ),
       body: Padding(
@@ -29,27 +38,39 @@ class FishingItemFormScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
-              controller: nameController,
-              decoration: InputDecoration(
-                labelText: 'Nome',
-                border: OutlineInputBorder(),
-              ),
+              controller: nomeController,
+              decoration: InputDecoration(labelText: 'Nome', border: OutlineInputBorder()),
             ),
             SizedBox(height: 10),
             TextField(
-              controller: weightController,
-              decoration: InputDecoration(
-                labelText: 'Peso (kg)',
-                border: OutlineInputBorder(),
-              ),
+              controller: pesoController,
+              decoration: InputDecoration(labelText: 'Peso (g)', border: OutlineInputBorder()),
               keyboardType: TextInputType.number,
+            ),
+            SizedBox(height: 10),
+            TextField(
+              controller: pesoIscaController,
+              decoration: InputDecoration(labelText: 'Peso da Isca (g)', border: OutlineInputBorder()),
+              keyboardType: TextInputType.number,
+            ),
+            SizedBox(height: 10),
+            TextField(
+              controller: materialController,
+              decoration: InputDecoration(labelText: 'Material', border: OutlineInputBorder()),
+            ),
+            SizedBox(height: 10),
+            TextField(
+              controller: tipoController,
+              decoration: InputDecoration(labelText: 'Tipo', border: OutlineInputBorder()),
+            ),
+            SizedBox(height: 10),
+            TextField(
+              controller: ambienteController,
+              decoration: InputDecoration(labelText: 'Ambiente', border: OutlineInputBorder()),
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                backgroundColor: Colors.green,
-              ),
+              style: ElevatedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15), backgroundColor: Colors.green),
               onPressed: () => saveItem(context),
               child: Text('Salvar', style: TextStyle(fontSize: 18)),
             ),
