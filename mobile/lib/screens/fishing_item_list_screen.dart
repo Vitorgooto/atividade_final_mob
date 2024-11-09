@@ -10,7 +10,7 @@ class FishingItemListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Itens de Pesca'),
+        title: Text('Equipamentos de Pesca'),
         backgroundColor: Colors.blueAccent,
       ),
       body: FutureBuilder(
@@ -26,7 +26,7 @@ class FishingItemListScreen extends StatelessWidget {
               },
             );
           } else if (snapshot.hasError) {
-            return Center(child: Text('Erro ao carregar itens'));
+            return Center(child: Text('Erro ao carregar equipamentos'));
           }
           return Center(child: CircularProgressIndicator());
         },
@@ -35,7 +35,7 @@ class FishingItemListScreen extends StatelessWidget {
         onPressed: () {
           Navigator.pushNamed(context, '/form');
         },
-        label: Text('Adicionar Item'),
+        label: Text('Adicionar Equipamento'),
         icon: Icon(Icons.add),
         backgroundColor: Colors.green,
       ),
