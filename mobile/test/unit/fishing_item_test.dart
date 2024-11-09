@@ -3,7 +3,17 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('Verifica inicialização de FishingItem', () {
-    final item = FishingItem(id: 1, name: 'Vara de Pesca', weight: 1.5);
-    expect(item.name, 'Vara de Pesca');
+    final item = FishingItem(
+      id: 1,
+      nome: 'Vara de Pesca',
+      peso: 1500,
+      pesoIsca: 200,
+      material: 'Fibra de Carbono',
+      tipo: 'Carretilha',
+      ambiente: 'Água Salgada',
+    );
+    expect(item.nome, 'Vara de Pesca');
+    expect(item.peso, 1500);
+    expect(item.material, 'Fibra de Carbono');
   });
 }
