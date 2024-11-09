@@ -11,9 +11,16 @@ void main() {
   });
 
   test('Adiciona um item de pesca ao backend', () async {
-    final item = FishingItem(name: 'Linha de Pesca', weight: 0.1);
+    final item = FishingItem(
+      nome: 'Linha de Pesca',
+      peso: 100,
+      pesoIsca: 10,
+      material: 'Nylon',
+      tipo: 'Linha',
+      ambiente: 'Água Doce',
+    );
     await repository.addItem(item);
     final items = await repository.fetchItems();
-    expect(items.any((i) => i.name == 'Linha de Pesca'), true);
+    expect(items.any((i) => i.nome == 'Linha de Pesca'), true);
   });
 }
